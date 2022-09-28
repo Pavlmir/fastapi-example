@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 import argon2
+import uvicorn
 
 from models import SoftwareEngineer
 from tortoise_models import SoftwareEngineer_Pydantic, SoftwareEngineerIn, SoftwareEngineers
@@ -48,5 +49,5 @@ register_tortoise(
     add_exception_handlers=True,
 )
 
-if __name__ == "main":
-    pass
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=7040, log_level="debug")
